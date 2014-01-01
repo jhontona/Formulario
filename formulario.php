@@ -13,8 +13,8 @@
 		<div class="form-group"><label for="mensaje">Mensaje: </label><textarea class="form-control" required name="mensaje" id="mensaje" placeholder="Tu mensaje aqui" ></textarea></div>
 		<?php
 			require_once('recaptchalib.php'); 
-			$pubkey = "6Le_X-sSAAAAACkgChoz9pIIPTWu5zGNjdUjxGpx"; 
-			echo "<center>" . recaptcha_get_html($pubkey) . "</center>"; 
+			$pubkey = "6LfBV-wSAAAAAG5eDRP4F8Ytw2la6itXBiLBOBLF"; 
+			echo "<center>" . recaptcha_get_html($pubkey)."</center>"; 
 		?>
 		<input type="submit" value="enviar" class="btn btn-danger btn-lg col-md-offset-5"> 
 	</form>

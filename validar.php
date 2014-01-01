@@ -1,5 +1,13 @@
 <?php
-require_once('recaptchalib.php'); 
+require_once('recaptchalib.php');
+require_once('conexion.php');  
+
+function guardarBD($nombre, $email, $telefono, $mensaje)
+{
+	$conexionBD = new Conexion();
+	$conexionBD.conectar();
+	$conexionBD.insertarDatos($nombre, $email, $telefono, $mensaje);
+}
 
 function enviarCorreo()
 {
@@ -7,6 +15,9 @@ function enviarCorreo()
 	$email = $_POST['email'];
 	$telefono = $_POST['telefono'];
 	$mensaje = $_POST['mensaje'];
+
+	guardarBD($nombre, $email, $telefono, $mensaje);
+
 	// Definir el correo de destino:
 	$dest = "tucorreo@gmail.com"; 
 	 
@@ -29,7 +40,7 @@ function enviarCorreo()
 	}
 }
 
-$privkey = "6Le_X-sSAAAAACZC9SeDZcFd_Ipf2KzeACfIa_is"; 
+$privkey = "6LfBV-wSAAAAAOpA2rVgiY7ysTtBTAgON6OkXXYI"; 
 $verify = recaptcha_check_answer($privkey, $_SERVER['REMOTE_ADDR'], $_POST['recaptcha_challenge_field'], $_POST['recaptcha_response_field']);
 
 if ($verify->is_valid) {  
